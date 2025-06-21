@@ -1,0 +1,92 @@
+---
+title: CheatSheet Rust
+excerpt: Learn how to write a "Hello World" program in Rust.
+tags: ['rust']
+date: "2023-08-27"
+readTime: "15 min read"
+published: true
+---
+
+# CheatSheet Rust
+
+
+## Variables in Rust
+
+```rust
+// Immutable variable (default)
+let x = 5;
+println!("x is: {}", x);
+
+// Mutable variable
+let mut y = 10;
+println!("y is: {}", y);
+y = 15;
+println!("y changed to: {}", y);
+
+// Shadowing
+let z = 1;
+let z = z + 1;
+let z = z * 2;
+println!("z is: {}", z);
+```
+
+
+## Loop in Rust
+
+```rust
+fn main() {
+    // Basic for loop
+    println!("Count up:");
+    for i in 1..=5 {  // Inclusive range (1 to 5)
+        println!("{}", i);
+    }
+
+    // While loop
+    println!("\nCountdown:");
+    let mut count = 3;
+    while count > 0 {
+        println!("{}!", count);
+        count -= 1;
+    }
+    println!("LIFTOFF!");
+
+    // Loop with break
+    println!("\nBreaking early:");
+    let mut num = 0;
+    loop {
+        num += 1;
+        if num == 3 { continue; }  // Skip 3
+        if num > 5 { break; }
+        println!("{}", num);
+    }
+}
+```
+
+
+## Time
+
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    // Simple delay
+    println!("Starting...");
+    thread::sleep(Duration::from_secs(1));
+    println!("1 second later");
+
+    // Measuring execution time
+    use std::time::Instant;
+    let start = Instant::now();
+    
+    // Some operation to measure
+    let mut sum = 0;
+    for i in 0..1000000 {
+        sum += i;
+    }
+    
+    let duration = start.elapsed();
+    println!("Operation took: {:?}", duration);
+    println!("Sum: {}", sum);
+}
+```
